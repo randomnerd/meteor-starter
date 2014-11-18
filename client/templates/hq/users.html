@@ -1,0 +1,52 @@
+<template name="hqUsers">
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>email</th>
+        <th>roles</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}{{> hq_user }}{{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="hq_user">
+  <tr>
+    <td>{{emails.[0].address}}</td>
+
+    <td>
+      {{#if $eq currentUser._id _id}}
+        <div class="ui label green">YOU</div>
+      {{/if}}
+
+      {{#each roles}}
+        {{> hq_role user=.. role=this}}
+      {{/each}}
+    </td>
+
+    <td class="right aligned">
+      {{> hq_roles_dropdown }}
+    </td>
+  </tr>
+</template>
+
+<template name="hq_role">
+  <div class="ui label blue">{{role}}<i class="delete icon removeRole"></i></div>
+</template>
+
+<template name="hq_roles_dropdown">
+  <div class="ui dropdown labeled icon button green tiny addRole {{#unless availRoles.count}}disabled{{/unless}}">
+    <i class="plus icon"></i>
+    <span class="text">Add role</span>
+    <div class="menu">
+    {{#each availRoles}}
+      {{#with role=this user=..}}
+      <div class="item">{{role.name}}</div>
+      {{/with}}
+    {{/each}}
+    </div>
+  </div>
+</template>

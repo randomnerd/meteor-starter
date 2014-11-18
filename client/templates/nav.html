@@ -1,0 +1,49 @@
+<template name="nav">
+  <div class="ui menu">
+    <div class="left menu">
+      <div class="title item">
+        <b>Startpage</b>
+      </div>
+      <a href="/" class="launch item {{isActiveRoute regex='home'}}">Home</a>
+      <a href="/contact" class="launch item">Contact</a>
+    </div>
+
+    <div class="right menu">
+      {{#if currentUser}}
+        {{> navUserMenu}}
+      {{else}}
+        {{> navLoginMenu}}
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="navUserMenu">
+  {{#if isInRole 'admin'}}{{> navAdminMenu }}{{/if}}
+  <div class="ui dropdown link item">
+    <i class="user icon"></i>
+    {{currentUser.emails.[0].address}}
+    <div class="menu">
+      <a class="item" href="/profile"><i class="icon setting"></i>Profile</a>
+      <div class="divider"></div>
+      <a class="item" id="logout"><i class="icon sign out"></i>Logout</a>
+    </div>
+  </div>
+</template>
+
+<template name="navLoginMenu">
+  <div class="ui link item login">
+    <i class="icon sign in"></i>Sign in
+  </div>
+
+  <div class="ui flowing popup">{{> atForm state="signIn" }}</div>
+</template>
+
+<template name="navAdminMenu">
+  <div class="ui dropdown link item">
+    <i class="setting icon"></i> admin
+    <div class="menu">
+      <a class="item" href="/hq/users"><i class="icon users"></i>Users</a>
+    </div>
+  </div>
+</template>
