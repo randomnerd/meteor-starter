@@ -35,3 +35,5 @@ Router.route '/hq/users',
   data:
     users: -> Meteor.users.find()
     allRoles: -> Meteor.roles.find()
+Router.route "/exchanges",
+  name: "exchanges.index"
