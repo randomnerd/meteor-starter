@@ -1,6 +1,15 @@
+# Client and Server Routes
+
 Router.configure
-  layoutTemplate: 'appLayout'
-  loadingTemplate: 'loading'
+  layoutTemplate: "MasterLayout"
+  loadingTemplate: "Loading"
+  notFoundTemplate: "NotFound"
+
+#
+#   Example:
+#   Router.route "/",
+#     name: "home"
+#
 
 Router.checkAdmin = ->
   user = Meteor.user()
