@@ -1,9 +1,7 @@
 <template name="MasterLayout">
-  <div class="ui page grid">
-    <div class="row"></div>
-    <div class="sixteen wide column">{{> nav }}</div>
 
-    <div class="twelve wide column">{{> yield }}</div>
-    <!--<div class="four wide column">{{> atForm }}</div>-->
+  <div class="container">
+    {{> nav }}
+    {{> yield }}
   </div>
 </template>

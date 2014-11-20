@@ -8,10 +8,10 @@ autopublish
 insecure
 accounts-password
 coffeescript
-randomnerd:semantic-ui
 zimme:iron-router-active
 raix:handlebar-helpers
 alanning:roles
 sacha:spin
 iron:router
-
+useraccounts:core
+useraccounts:bootstrap
